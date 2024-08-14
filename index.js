@@ -19,11 +19,14 @@ app.set('views', './views')
 app.use(Layout)
 
     
+app.use('/assets', express.static(path.join(__dirname, 'Public/assets')))
+app.use('/plugins', express.static(path.join(__dirname, 'Public/plugins')))
+app.use('/uploads', express.static(path.join(__dirname, 'Public/uploads')))
 
-app.use(express.static(path.join(__dirname + '/public')))
 app.use(cors())
 app.use(express.json(), express.urlencoded({ extended: true }))
 // for read json 
+console.log(__dirname);
 // app.use(require('./Route/booksRoute'))
 // app.use(require('./Route/categoryRoute'))
 // app.use(require("./Route/institutRoute"))
@@ -40,6 +43,7 @@ app.use(express.json(), express.urlencoded({ extended: true }))
 
 app.use(require('./Route/navbatROute'))
 app.use(require('./Route/messageRoute'))
+
 app.listen(PORT, () => {
     console.log(`Sever is running at ${PORT} port`)
 })
